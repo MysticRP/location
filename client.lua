@@ -41,17 +41,17 @@ Citizen.CreateThread(
 			if (Vdist(playerPos.x, playerPos.y, playerPos.z, x, y, z) < 100.0) then
 				DrawMarker(1, x, y, z - 1, 0, 0, 0, 0, 0, 0, 3.0001, 3.0001, 1.5001, 255, 10, 10,165, 0, 0, 0,0)
 				if (Vdist(playerPos.x, playerPos.y, playerPos.z, x, y, z) < 4.0) then
-					local ply = GetPlayerPed(-1)
-				if IsPedInAnyVehicle(ply, true) then
+				local ply = GetPlayerPed(-1)
+				    if IsPedInAnyVehicle(ply, true) then
 				    DisplayHelpText('Appuyez sur ~INPUT_CONTEXT~ pour ~r~ranger~s~ votre ~b~camion')
 					if (IsControlJustReleased(1, 51)) then -- Press E // Appuyez sur E
 						local vehicle = GetVehiclePedIsIn(ply, true)
-	                    local mulemodel = GetHashKey('mule3')
+	                                        local mulemodel = GetHashKey('mule3')
 						local benmodel = GetHashKey('benson')
-	                    local isVehicleLocationM = IsVehicleModel(vehicle, mulemodel)
+	                                        local isVehicleLocationM = IsVehicleModel(vehicle, mulemodel)
 						local isVehicleLocationB = IsVehicleModel(vehicle, benmodel)
 						local isLocaPlate = GetVehicleNumberPlateText(vehicle)
-                     if isVehicleLocationM or isVehicleLocationB then
+                                         if isVehicleLocationM or isVehicleLocationB then
 					 if isLocaPlate == locaPlate then
 						TriggerServerEvent("location:cautionOff", cautionprice)
 						Notify("Vous avez récupérer vos ~g~"..cautionprice.."$~s~ de caution pour le ~b~camion")
@@ -97,8 +97,8 @@ end
 ---- Menu
 
 function LocationMenu()
-   options.menu_subtitle = "LOCATION"
-    ClearMenu()
+        options.menu_subtitle = "LOCATION"
+        ClearMenu()
 	Menu.addButton("Louer une Mule", "Mule", nil)
 	Menu.addButton("Louer un Benson", "Benson", nil)
 end
@@ -110,7 +110,7 @@ function Mule()
 	Citizen.Wait(0)
 	caution = true
 	TriggerServerEvent("location:cautionOn", cautionprice)
-    Notify("Vous avez laisser ~g~"..cautionprice.."$~s~ de caution pour le ~b~camion")
+        Notify("Vous avez laisser ~g~"..cautionprice.."$~s~ de caution pour le ~b~camion")
 	local ped = GetPlayerPed(-1)
 	local player = PlayerId()
 	local vehicle = GetHashKey('mule3')
@@ -137,7 +137,7 @@ function Benson()
 	Citizen.Wait(0)
 	caution = true
 	TriggerServerEvent("location:cautionOn", cautionprice)
-    Notify("Vous avez laisser ~g~"..cautionprice.."$~s~ de caution pour le ~b~camion")
+        Notify("Vous avez laisser ~g~"..cautionprice.."$~s~ de caution pour le ~b~camion")
 	local ped = GetPlayerPed(-1)
 	local player = PlayerId()
 	local vehicle = GetHashKey('benson')
